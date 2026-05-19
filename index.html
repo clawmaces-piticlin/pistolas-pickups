@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creta 2026 🌊</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+ :root {
+ --sea: #1a4a7a;
+ --sea-light: #2e6fad;
+ --sky: #d6eaf8;
+ --sand: #f5ede0;
+ --terra: #c1440e;
+ --olive: #5a7a3a;
+ --white: #fdfcfa;
+ --ink: #1c1a18;
+ --muted: #7a7570;
+ --card-bg: #ffffff;
+ --nav-h: 64px;
+ --radius: 16px;
+ }
+
+ * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+ body {
+ font-family: 'DM Sans', sans-serif;
+ background: var(--sand);
+ color: var(--ink);
+ min-height: 100vh;
+ padding-bottom: var(--nav-h);
+ }
+
+ /* ─── BOTTOM NAV ─────────────────────────────────── */
+ .bottom-nav {
+ position: fixed;
+ bottom: 0; left: 0; right: 0;
+ height: var(--nav-h);
+ background: var(--sea);
+ display: flex;
+ z-index: 100;
+ box-shadow: 0 -2px 20px rgba(26,74,122,.35);
+ }
+
+ .nav-item {
+ flex: 1;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ gap: 3px;
+ cursor: pointer;
+ color: rgba(255,255,255,.5);
+ transition: color .2s, transform .15s;
+ border: none;
+ background: transparent;
+ padding: 0;
+ position: relative;
+ }
+
+ .nav-item.active { color: #fff; }
+ .nav-item.active::after {
+ content: '';
+ position: absolute;
+ top: 0; left: 20%; right: 20%;
+ height: 2px;
+ background: var(--terra);
+ border-radius: 0 0 4px 4px;
+ }
+
+ .nav-item:active { transform: scale(.9); }
+
+ .nav-icon { font-size: 22px; line-height: 1; }
+ .nav-label { font-size: 10px; font-weight: 500; letter-spacing: .03em; text-transform: uppercase; }
+
+ /* ─── SECTIONS ───────────────────────────────────── */
+ .section { display: none; min-height: 100vh; }
+ .section.active { display: block; }
+
+ /* ─── INDEX ──────────────────────────────────────── */
+ .hero {
+ background: linear-gradient(170deg, var(--sea) 0%, var(--sea-light) 60%, #5ba3d0 100%);
+ padding: 48px 24px 40px;
+ position: relative;
+ overflow: hidden;
+ }
+
+ .hero::before {
+ content: '';
+ position: absolute;
+ bottom: -30px; left: -20px; right: -20px;
+ height: 80px;
+ background: var(--sand);
+ border-radius: 60% 60% 0 0;
+ }
+
+ .hero-wave {
+ font-size: 48px;
+ margin-bottom: 12px;
+ }
+
+ .hero h1 {
+ font-family: 'Playfair Display', serif;
+ font-size: 38px;
+ color: #fff;
+ line-height: 1.1;
+ margin-bottom: 6px;
+ }
+
+ .hero h1 em {
+ font-style: italic;
+ color: #a8d8f5;
+ }
+
+ .hero-sub {
+ color: rgba(255,255,255,.75);
+ font-size: 14px;
+ font-weight: 300;
+ margin-bottom: 28px;
+ }
+
+ .hero-pills {
+ display: flex;
+ gap: 8px;
+ flex-wrap: wrap;
+ }
+
+ .pill {
+ background: rgba(255,255,255,.15);
+ border: 1px solid rgba(255,255,255,.25);
+ color: #fff;
+ padding: 5px 12px;
+ border-radius: 20px;
+ font-size: 12px;
+ font-weight: 500;
+ backdrop-filter: blur(4px);
+ }
+
+ /* Quick-access grid */
+ .quick-grid {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 12px;
+ padding: 32px 16px 16px;
+ }
+
+ .quick-card {
+ background: var(--card-bg);
+ border-radius: var(--radius);
+ padding: 20px 16px;
+ cursor: pointer;
+ transition: transform .15s, box-shadow .15s;
+ box-shadow: 0 2px 8px rgba(26,74,122,.08);
+ display: flex;
+ flex-direction: column;
+ gap: 8px;
+ border: 1px solid rgba(26,74,122,.06);
+ }
+
+ .quick-card:active { transform: scale(.97); box-shadow: 0 1px 4px rgba(26,74,122,.1); }
+
+ .quick-card .qc-icon { font-size: 28px; }
+ .quick-card .qc-title {
+ font-weight: 600;
+ font-size: 15px;
+ color: var(--sea);
+ }
+ .quick-card .qc-sub {
+ font-size: 12px;
+ color: var(--muted);
+ font-weight: 300;
+ }
+
+ /* Countdown */
+ .countdown-block {
+ margin: 4px 16px 0;
+ background: var(--sea);
+ border-radius: var(--radius);
+ padding: 20px;
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ color: #fff;
+ }
+
+ .countdown-emoji { font-size: 32px; }
+ .countdown-text { flex: 1; }
+ .countdown-text .ct-num {
+ font-family: 'Playfair Display', serif;
+ font-size: 32px;
+ line-height: 1;
+ }
+ .countdown-text .ct-label { font-size: 12px; color: rgba(255,255,255,.65); margin-top: 2px; }
+
+ /* ─── ALOJAMIENTO ─────────────────────────────────── */
+ .page-header {
+ background: linear-gradient(135deg, var(--sea) 0%, var(--sea-light) 100%);
+ padding: 32px 20px 28px;
+ color: #fff;
+ }
+
+ .page-header .ph-icon { font-size: 32px; margin-bottom: 8px; }
+ .page-header h2 {
+ font-family: 'Playfair Display', serif;
+ font-size: 28px;
+ }
+ .page-header .ph-sub { font-size: 13px; color: rgba(255,255,255,.7); margin-top: 4px; font-weight: 300; }
+
+ .cards-list { padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+
+ .info-card {
+ background: var(--card-bg);
+ border-radius: var(--radius);
+ overflow: hidden;
+ box-shadow: 0 2px 10px rgba(26,74,122,.08);
+ border: 1px solid rgba(26,74,122,.06);
+ }
+
+ .info-card .ic-header {
+ background: var(--sky);
+ padding: 14px 16px;
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ }
+
+ .ic-header-icon { font-size: 20px; }
+ .ic-header-title { font-weight: 600; font-size: 15px; color: var(--sea); flex: 1; }
+ .ic-header-badge {
+ background: var(--terra);
+ color: #fff;
+ font-size: 11px;
+ padding: 3px 8px;
+ border-radius: 10px;
+ font-weight: 600;
+ }
+
+ .ic-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+
+ .ic-row {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ font-size: 14px;
+ }
+
+ .ic-row .ir-label { color: var(--muted); font-weight: 300; }
+ .ic-row .ir-value { font-weight: 500; text-align: right; max-width: 60%; }
+
+ .ic-divider { height: 1px; background: rgba(26,74,122,.07); margin: 2px 0; }
+
+ .ic-footer {
+ padding: 10px 16px;
+ background: rgba(26,74,122,.03);
+ border-top: 1px solid rgba(26,74,122,.06);
+ display: flex;
+ gap: 8px;
+ }
+
+ .btn {
+ padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 500;
+ border: none; cursor: pointer; font-family: inherit; transition: opacity .15s;
+ }
+ .btn:active { opacity: .7; }
+ .btn-primary { background: var(--sea); color: #fff; }
+ .btn-ghost { background: transparent; color: var(--sea); border: 1.5px solid var(--sea); }
+
+ /* ─── VUELOS ──────────────────────────────────────── */
+ .flight-card {
+ background: var(--card-bg);
+ border-radius: var(--radius);
+ padding: 18px 16px;
+ box-shadow: 0 2px 10px rgba(26,74,122,.08);
+ border: 1px solid rgba(26,74,122,.06);
+ display: flex;
+ flex-direction: column;
+ gap: 16px;
+ }
+
+ .flight-route {
+ display: flex;
+ align-items: center;
+ gap: 0;
+ }
+
+ .fr-airport { flex: 1; }
+ .fr-airport .fra-code { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--sea); line-height: 1; }
+ .fr-airport .fra-city { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+ .fr-middle {
+ flex: 1.2;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap: 4px;
+ }
+
+ .fr-plane { font-size: 18px; }
+ .fr-line {
+ width: 100%;
+ height: 1.5px;
+ background: linear-gradient(90deg, var(--sea-light), var(--terra));
+ border-radius: 1px;
+ position: relative;
+ }
+ .fr-duration { font-size: 11px; color: var(--muted); }
+
+ .flight-meta {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 8px;
+ }
+
+ .fm-item { background: var(--sky); border-radius: 8px; padding: 8px 10px; }
+ .fm-item .fmi-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+ .fm-item .fmi-value { font-size: 14px; font-weight: 600; color: var(--sea); margin-top: 2px; }
+
+ /* ─── VEHÍCULOS ───────────────────────────────────── */
+ .vehicle-card {
+ background: var(--card-bg);
+ border-radius: var(--radius);
+ overflow: hidden;
+ box-shadow: 0 2px 10px rgba(26,74,122,.08);
+ border: 1px solid rgba(26,74,122,.06);
+ }
+
+ .vc-top {
+ background: linear-gradient(120deg, var(--olive) 0%, #7faa55 100%);
+ padding: 20px;
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ color: #fff;
+ }
+
+ .vc-emoji { font-size: 40px; }
+ .vc-name { font-weight: 600; font-size: 17px; }
+ .vc-type { font-size: 13px; opacity: .8; margin-top: 2px; }
+
+ .vc-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+ .vc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+ .vc-chip {
+ background: rgba(90,122,58,.1);
+ border-radius: 8px;
+ padding: 8px 10px;
+ font-size: 13px;
+ color: var(--olive);
+ font-weight: 500;
+ display: flex;
+ align-items: center;
+ gap: 6px;
+ }
+
+ /* ─── VUELOS ──────────────────────────────────────── */
+ .journey-card {
+ background: var(--card-bg);
+ border-radius: var(--radius);
+ overflow: hidden;
+ box-shadow: 0 2px 10px rgba(26,74,122,.08);
+ border: 1px solid rgba(26,74,122,.1);
+ }
+
+ .journey-header {
+ background: linear-gradient(135deg, var(--sea) 0%, var(--sea-light) 100%);
+ padding: 14px 18px;
+ display: flex; align-items: center; gap: 12px;
+ color: #fff;
+ }
+
+ .jh-icon { font-size: 22px; }
+ .jh-title { font-family: 'Playfair Display', serif; font-size: 18px; flex: 1; }
+ .jh-date { font-size: 12px; opacity: .8; background: rgba(255,255,255,.15); padding: 4px 10px; border-radius: 10px; }
+
+ /* Tramo individual */
+ .leg {
+ padding: 16px 16px 14px;
+ border-bottom: 1px solid rgba(26,74,122,.07);
+ }
+ .leg:last-child { border-bottom: none; }
+
+ .leg-header {
+ display: flex; align-items: center; gap: 8px;
+ margin-bottom: 12px;
+ }
+ .leg-num {
+ width: 20px; height: 20px; border-radius: 50%;
+ background: var(--sea); color: #fff;
+ font-size: 11px; font-weight: 700;
+ display: flex; align-items: center; justify-content: center;
+ flex-shrink: 0;
+ }
+ .leg-label { font-size: 11px; font-weight: 700; color: var(--sea); text-transform: uppercase; letter-spacing: .05em; flex: 1; }
+ .leg-flight {
+ font-family: monospace; font-size: 12px;
+ background: rgba(26,74,122,.07); color: var(--sea);
+ padding: 2px 8px; border-radius: 6px; font-weight: 600;
+ }
+
+ /* Fila aeropuerto: hora grande + código + ciudad */
+ .leg-route {
+ display: flex; align-items: center; gap: 0;
+ }
+
+ .leg-airport { flex: 1; }
+ .leg-airport.right { text-align: right; }
+
+ .la-time { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--sea); line-height: 1; }
+ .la-code { font-size: 13px; font-weight: 700; color: var(--ink); margin-top: 3px; }
+ .la-city { font-size: 11px; color: var(--muted); font-weight: 300; margin-top: 1px; }
+
+ .leg-arrow {
+ flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px;
+ padding: 0 4px;
+ }
+ .leg-arrow-line {
+ width: 100%; height: 1.5px;
+ background: linear-gradient(90deg, var(--sea-light), var(--terra));
+ border-radius: 1px; position: relative;
+ }
+ .leg-arrow-line::after {
+ content: '✈';
+ position: absolute; top: -8px; left: 50%; transform: translateX(-50%);
+ font-size: 13px;
+ }
+ .leg-duration { font-size: 11px; color: var(--muted); margin-top: 6px; }
+
+ /* Escala */
+ .layover {
+ display: flex; align-items: center; gap: 10px;
+ padding: 9px 16px;
+ background: rgba(193,68,14,.05);
+ border-top: 1px dashed rgba(193,68,14,.2);
+ border-bottom: 1px dashed rgba(193,68,14,.2);
+ }
+ .layover-icon { font-size: 16px; }
+ .layover-text { font-size: 12px; color: var(--terra); font-weight: 500; }
+ .layover-time { margin-left: auto; font-size: 12px; color: var(--terra); font-weight: 700; }
+
+ /* ─── VEHÍCULOS ─────────────────────────────────────── */
+ .rental-company {
+ margin: 16px 16px 0;
+ background: var(--card-bg);
+ border-radius: var(--radius);
+ overflow: hidden;
+ border: 1px solid rgba(90,122,58,.2);
+ box-shadow: 0 2px 10px rgba(90,122,58,.1);
+ }
+
+ .rc-header {
+ background: linear-gradient(135deg, var(--olive) 0%, #7faa55 100%);
+ padding: 18px 18px 16px;
+ color: #fff;
+ display: flex; align-items: center; gap: 14px;
+ }
+
+ .rc-logo {
+ width: 46px; height: 46px; border-radius: 10px;
+ background: rgba(255,255,255,.2);
+ display: flex; align-items: center; justify-content: center;
+ font-size: 24px; flex-shrink: 0;
+ }
+
+ .rc-name { font-family: 'Playfair Display', serif; font-size: 20px; line-height: 1.1; }
+ .rc-tagline { font-size: 12px; opacity: .75; margin-top: 2px; }
+
+ .rc-dates {
+ display: grid; grid-template-columns: 1fr 1fr;
+ border-bottom: 1px solid rgba(90,122,58,.12);
+ }
+
+ .rc-date-col {
+ padding: 14px 16px;
+ display: flex; flex-direction: column; gap: 3px;
+ }
+ .rc-date-col:first-child { border-right: 1px solid rgba(90,122,58,.12); }
+
+ .rcd-label { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--olive); font-weight: 700; }
+ .rcd-date { font-size: 13px; font-weight: 500; color: var(--muted); margin-top: 1px; }
+ .rcd-time { font-size: 24px; font-weight: 700; color: var(--olive); line-height: 1.1; font-family: 'Playfair Display', serif; }
+ .rcd-place { font-size: 12px; color: var(--muted); font-weight: 300; margin-top: 3px; }
+
+ .rc-contacts { padding: 4px 0; }
+
+ .rc-contact-row {
+ padding: 11px 16px;
+ display: flex; align-items: center; gap: 12px;
+ border-bottom: 1px solid rgba(26,74,122,.05);
+ text-decoration: none; color: inherit;
+ transition: background .15s; cursor: pointer;
+ }
+ .rc-contact-row:last-child { border-bottom: none; }
+ .rc-contact-row:active { background: rgba(90,122,58,.06); }
+
+ .rcr-icon {
+ width: 34px; height: 34px; border-radius: 8px;
+ background: rgba(90,122,58,.1);
+ display: flex; align-items: center; justify-content: center;
+ font-size: 16px; flex-shrink: 0;
+ }
+
+ .rcr-text { flex: 1; }
+ .rcr-label { font-size: 11px; color: var(--muted); }
+ .rcr-value { font-size: 14px; font-weight: 500; color: var(--ink); margin-top: 1px; }
+ .rcr-arrow { font-size: 12px; color: var(--muted); }
+
+ /* Tarjetas individuales de coche */
+ .car-card {
+ margin: 12px 16px 0;
+ background: var(--card-bg);
+ border-radius: var(--radius);
+ overflow: hidden;
+ border: 1px solid rgba(90,122,58,.15);
+ box-shadow: 0 2px 8px rgba(90,122,58,.08);
+ }
+
+ .car-header {
+ background: rgba(90,122,58,.07);
+ padding: 13px 16px;
+ display: flex; align-items: center; gap: 12px;
+ border-bottom: 1px solid rgba(90,122,58,.12);
+ }
+
+ .car-num {
+ width: 30px; height: 30px; border-radius: 50%;
+ background: var(--olive); color: #fff;
+ display: flex; align-items: center; justify-content: center;
+ font-size: 14px; font-weight: 700; flex-shrink: 0;
+ }
+
+ .car-model { font-weight: 600; font-size: 15px; color: var(--ink); flex: 1; }
+ .car-emoji { font-size: 22px; }
+
+ .car-body { padding: 4px 0; }
+
+ .car-row {
+ padding: 10px 16px;
+ display: flex; align-items: flex-start; gap: 12px;
+ border-bottom: 1px solid rgba(26,74,122,.05);
+ }
+ .car-row:last-child { border-bottom: none; }
+
+ .car-row-icon {
+ width: 30px; height: 30px; border-radius: 7px;
+ background: rgba(90,122,58,.08);
+ display: flex; align-items: center; justify-content: center;
+ font-size: 14px; flex-shrink: 0; margin-top: 1px;
+ }
+
+ .car-row-content { flex: 1; }
+ .car-row-label { font-size: 11px; color: var(--muted); }
+ .car-row-value { font-size: 14px; font-weight: 500; color: var(--ink); margin-top: 2px; }
+
+ .car-row-value.plate {
+ font-family: monospace; font-size: 16px; letter-spacing: .1em;
+ background: rgba(26,74,122,.06); display: inline-block;
+ padding: 2px 8px; border-radius: 4px;
+ }
+ .car-row-value.booking-id { font-family: monospace; font-size: 13px; color: var(--olive); }
+ .car-row-value.notes { font-size: 13px; color: var(--muted); font-weight: 300; line-height: 1.5; }
+
+ /* ─── ALOJAMIENTO ────────────────────────────────────── */
+ .accom-card {
+ margin: 16px 16px 0;
+ background: var(--card-bg);
+ border-radius: var(--radius);
+ overflow: hidden;
+ border: 1px solid rgba(26,74,122,.15);
+ box-shadow: 0 2px 10px rgba(26,74,122,.08);
+ }
+
+ .accom-header {
+ padding: 18px 18px 16px;
+ color: #fff;
+ display: flex; align-items: flex-start; gap: 14px;
+ }
+
+ .accom-logo {
+ width: 46px; height: 46px; border-radius: 10px;
+ background: rgba(255,255,255,.2);
+ display: flex; align-items: center; justify-content: center;
+ font-size: 24px; flex-shrink: 0; margin-top: 2px;
+ }
+
+ .accom-name { font-family: 'Playfair Display', serif; font-size: 20px; line-height: 1.1; }
+ .accom-tagline { font-size: 12px; opacity: .75; margin-top: 3px; }
+
+ .accom-dates {
+ display: grid; grid-template-columns: 1fr 1fr;
+ border-bottom: 1px solid rgba(26,74,122,.08);
+ }
+
+ .accom-date-col {
+ padding: 14px 16px;
+ display: flex; flex-direction: column; gap: 3px;
+ }
+ .accom-date-col:first-child { border-right: 1px solid rgba(26,74,122,.08); }
+
+ .adc-label { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
+ .adc-date { font-size: 13px; font-weight: 500; color: var(--muted); margin-top: 1px; }
+ .adc-time { font-size: 24px; font-weight: 700; line-height: 1.1; font-family: 'Playfair Display', serif; }
+
+ .accom-contacts { padding: 4px 0; }
+
+ /* ─── VISITAS ─────────────────────────────────────── */
+ .tag-must { background: #fff0eb; color: var(--terra); }
+ .tag-opt { background: #f0f7ea; color: var(--olive); }
+
+ /* Progress bar */
+ .visits-progress {
+ margin: 16px 16px 0;
+ background: var(--card-bg);
+ border-radius: var(--radius);
+ padding: 14px 16px;
+ border: 1px solid rgba(26,74,122,.08);
+ }
+ .vp-label { font-size: 13px; color: var(--muted); margin-bottom: 8px; display: flex; justify-content: space-between; }
+ .vp-label strong { color: var(--ink); }
+ .vp-bar-bg { background: rgba(26,74,122,.1); border-radius: 4px; height: 7px; }
+ .vp-bar-fill { height: 100%; background: linear-gradient(90deg, var(--sea-light), var(--olive)); border-radius: 4px; transition: width .4s ease; width: 0%; }
+
+ /* Villa blocks */
+ .villa-block { padding: 16px 16px 0; }
+
+ .villa-header {
+ border-radius: var(--radius) var(--radius) 0 0;
+ padding: 16px 18px;
+ color: #fff;
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ }
+ .vh-icon { font-size: 28px; }
+ .vh-name { font-family: 'Playfair Display', serif; font-size: 19px; line-height: 1.1; }
+ .vh-sub { font-size: 12px; opacity: .75; margin-top: 2px; }
+ .vh-progress {
+ margin-left: auto; text-align: center;
+ background: rgba(255,255,255,.18); border-radius: 10px; padding: 5px 12px;
+ flex-shrink: 0;
+ }
+ .vhp-num { font-size: 18px; font-weight: 700; line-height: 1; }
+ .vhp-label { font-size: 10px; opacity: .8; }
+
+ /* Category accordion */
+ .villa-categories {
+ background: var(--card-bg);
+ border-radius: 0 0 var(--radius) var(--radius);
+ border: 1px solid rgba(26,74,122,.08);
+ border-top: none;
+ overflow: hidden;
+ margin-bottom: 4px;
+ }
+
+ .cat-section { border-top: 1px solid rgba(26,74,122,.06); }
+ .cat-section:first-child { border-top: none; }
+
+ .cat-header {
+ padding: 11px 16px;
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ cursor: pointer;
+ background: rgba(26,74,122,.025);
+ user-select: none;
+ transition: background .15s;
+ }
+ .cat-header:active { background: rgba(26,74,122,.06); }
+
+ .cat-icon { font-size: 16px; }
+ .cat-name { font-size: 12px; font-weight: 700; color: var(--sea); flex: 1; text-transform: uppercase; letter-spacing: .05em; }
+ .cat-count { font-size: 12px; color: var(--muted); font-weight: 500; }
+ .cat-chevron { font-size: 10px; color: var(--muted); transition: transform .22s; display: inline-block; }
+ .cat-header.open .cat-chevron { transform: rotate(180deg); }
+
+ .cat-items { display: none; }
+ .cat-items.open { display: block; }
+
+ /* Individual visit item */
+ .visit-item {
+ padding: 14px 16px;
+ display: flex;
+ flex-direction: column;
+ gap: 8px;
+ border-top: 1px solid rgba(26,74,122,.05);
+ cursor: default;
+ transition: background .15s;
+ user-select: none;
+ }
+ .visit-item:active { background: rgba(26,74,122,.04); }
+
+ .visit-header {
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ }
+
+ .visit-check {
+ width: 24px; height: 24px; border-radius: 50%;
+ border: 2px solid rgba(26,74,122,.25);
+ display: flex; align-items: center; justify-content: center;
+ flex-shrink: 0;
+ transition: all .2s;
+ font-size: 12px; color: transparent;
+ background: transparent;
+ cursor: pointer;
+ }
+ .visit-item.done .visit-check {
+ background: var(--olive); border-color: var(--olive); color: #fff;
+ }
+
+ .visit-info { flex: 1; min-width: 0; }
+ .visit-name { font-size: 15px; font-weight: 600; transition: color .2s; }
+ .visit-detail { font-size: 13px; color: var(--muted); margin-top: 4px; font-weight: 300; line-height: 1.4; }
+
+ .visit-link {
+ display: flex; align-items: center; gap: 6px;
+ margin-top: 8px;
+ color: var(--sea);
+ font-size: 12px; font-weight: 600;
+ text-decoration: none;
+ transition: opacity .2s;
+ }
+ .visit-link:active { opacity: .7; }
+
+ .visit-item.done .visit-name {
+ text-decoration: line-through;
+ color: var(--muted);
+ }
+
+ .visit-tag {
+ font-size: 11px; padding: 3px 8px; border-radius: 8px;
+ font-weight: 600; align-self: flex-start;
+ }
+
+
+ /* ─── LOADER ANIMATION ────────────────────────────── */
+ @keyframes fadeUp {
+ from { opacity: 0; transform: translateY(12px); }
+ to { opacity: 1; transform: translateY(0); }
+ }
+
+ .section.active > * {
+ animation: fadeUp .3s ease both;
+ }
+
+ .section.active > *:nth-child(2) { animation-delay: .05s; }
+ .section.active > *:nth-child(3) { animation-delay: .10s; }
+ .section.active > *:nth-child(4) { animation-delay: .15s; }
+
+ /* ─── MISC ────────────────────────────────────────── */
+ .spacer { height: 20px; }
+
+ .map-placeholder {
+ margin: 0 16px;
+ background: var(--sky);
+ border-radius: var(--radius);
+ height: 140px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ flex-direction: column;
+ gap: 8px;
+ color: var(--sea-light);
+ font-size: 13px;
+ border: 1.5px dashed var(--sea-light);
+ }
+
+ .map-placeholder .mp-icon { font-size: 32px; }
+
+ .cost-summary {
+ margin: 0 16px;
+ background: linear-gradient(135deg, var(--terra) 0%, #e06030 100%);
+ border-radius: var(--radius);
+ padding: 18px;
+ color: #fff;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ }
+
+ .cs-label { font-size: 13px; opacity: .85; }
+ .cs-amount { font-family: 'Playfair Display', serif; font-size: 30px; }
+ .cs-per { font-size: 11px; opacity: .7; }
+
+</style>
+</head>
+<body>
+
+<!-- ═══ SECTION: INDEX ════════════════════════════════ -->
+<section class="section active" id="sec-index">
+
+ <div class="hero">
+ <div class="hero-wave">🌊</div>
+ <h1>Creta<br><emC>Verano '26</em></h1>
+ <p class="hero-sub">15 días en la isla de los dioses</p>
+ <div class="hero-pills">
+ <span class="pill">📅 23 jun – 7 jul</span>
+ <span class="pill">✈️ OVD → HER</span>
+ <span class="pill">👥 8 personas</span>
+ </div>
+ </div>
+
+ <div class="countdown-block" style="margin-top:24px">
+ <div class="countdown-emoji">⏳</div>
+ <div class="countdown-text">
+ <div class="ct-num" id="countdown-num">—</div>
+ <div class="ct-label">días para el viaje</div>
+ </div>
+ </div>
+
+ <div class="quick-grid">
+ <div class="quick-card" onclick="navigate('alojamiento')">
+ <span class="qc-icon">🏡</span>
+ <span class="qc-title">Alojamiento</span>
+ <span class="qc-sub">Villa Estia & Villa Vatalos</span>
+ </div>
+ <div class="quick-card" onclick="navigate('vuelos')">
+ <span class="qc-icon">✈️</span>
+ <span class="qc-title">Vuelos</span>
+ <span class="qc-sub">Oviedo ↔ Heraklión</span>
+ </div>
+ <div class="quick-card" onclick="navigate('vehiculos')">
+ <span class="qc-icon">🚗</span>
+ <span class="qc-title">Vehículos</span>
+ <span class="qc-sub">Fiat Panda · MCar</span>
+ </div>
+ <div class="quick-card" onclick="navigate('visitas')">
+ <span class="qc-icon">🗺️</span>
+ <span class="qc-title">Visitas</span>
+ <span class="qc-sub">Playas y cultura</span>
+ </div>
+ </div>
+
+ <div class="spacer"></div>
+</section>
+
+<!-- ═══ SECTION: ALOJAMIENTO ══════════════════════════ -->
+<section class="section" id="sec-alojamiento">
+
+ <div class="page-header">
+ <div class="ph-icon">🏡</div>
+ <h2>Alojamiento</h2>
+ <p class="ph-sub">2 villas · 23 junio – 7 julio</p>
+ </div>
+
+ <!-- ── VILLA ESTIA ── -->
+ <div class="accom-card">
+ <div class="accom-header" style="background:linear-gradient(135deg,var(--sea) 0%,var(--sea-light) 100%)">
+ <div class="accom-logo">🏠</div>
+ <div>
+ <div class="accom-name">Villa Estia</div>
+ <div class="accom-tagline">Casa 1 · Zona este · Heraklion</div>
+ </div>
+ </div>
+
+ <div class="accom-dates">
+ <div class="accom-date-col">
+ <span class="adc-label" style="color:var(--sea)">✅ Check-in</span>
+ <span class="adc-date">Lun 23 junio</span>
+ <span class="adc-time" style="color:var(--sea)">16:00</span>
+ </div>
+ <div class="accom-date-col">
+ <span class="adc-label" style="color:var(--muted)">🔚 Check-out</span>
+ <span class="adc-date">Mie 2 julio</span>
+ <span class="adc-time" style="color:var(--muted)">11:00</span>
+ </div>
+ </div>
+
+ <div class="accom-contacts">
+ <a class="rc-contact-row" href="https://maps.app.goo.gl/A8wH2AiMAe5d8GPy9" target="_blank">
+ <div class="rcr-icon" style="background:rgba(26,74,122,.08)">📍</div>
+ <div class="rcr-text">
+ <div class="rcr-label">Ubicación</div>
+ <div class="rcr-value">Ver en Google Maps</div>
+ </div>
+ <span class="rcr-arrow">↗</span>
+ </a>
+ <div class="rc-contact-row" style="cursor:default">
+ <div class="rcr-icon" style="background:rgba(26,74,122,.08)">👤</div>
+ <div class="rcr-text">
+ <div class="rcr-label">Dueños</div>
+ <div class="rcr-value">Martin y Sue Pearce</div>
+ </div>
+ </div>
+ <a class="rc-contact-row" href="tel:00306978489199">
+ <div class="rcr-icon" style="background:rgba(26,74,122,.08)">📞</div>
+ <div class="rcr-text">
+ <div class="rcr-label">Litsa (Contacto local)</div>
+ <div class="rcr-value">+30 697 84 89 199</div>
+ <div class="rcr-value" style="font-size: 11px; color: var(--muted); font-weight: 300;">Llamar al estar en Ierapetra</div>
+ </div>
+ <span class="rcr-arrow">↗</span>
+ </a>
+ <a class="rc-contact-row" href="tel:+4407971963797">
+ <div class="rcr-icon" style="background:rgba(26,74,122,.08)">📞</div>
+ <div class="rcr-text">
+ <div class="rcr-label">Teléfono</div>
+ <div class="rcr-value">+44 07971 963797</div>
+ </div>
+ <span class="rcr-arrow">↗</span>
+ </a>
+ <a class="rc-contact-row" href="mailto:martin.pearce54321@gmail.com">
+ <div class="rcr-icon" style="background:rgba(26,74,122,.08)">✉️</div>
+ <div class="rcr-text">
+ <div class="rcr-label">Email</div>
+ <div class="rcr-value">martin.pearce54321@gmail.com</div>
+ </div>
+ <span class="rcr-arrow">↗</span>
+ </a>
+ <a class="rc-contact-row" href="tel:00306948486850">
+ <div class="rcr-icon" style="background:rgba(26,74,122,.08)">🆘</div>
+ <div class="rcr-text">
+ <div class="rcr-label">Urgencias (Areti)</div>
+ <div class="rcr-value">+0030 694 848 6850</div>
+ </div>
+ <span class="rcr-arrow">↗</span>
+ </a>
+ </div>
+ </div>
+
+ <!-- ── VILLA VATALOS ── -->
+ <div class="accom-card" style="margin-bottom:0">
+ <div class="accom-header" style="background:linear-gradient(135deg,#7a4a2a 0%,var(--terra) 100%)">
+ <div class="accom-logo">🏡</div>
+ <div>
+ <div class="accom-name">Villa Vatalos</div>
+ <div class="accom-tagline">Casa 2 · Zona oeste · Chania</div>
+ </div>
+ </div>
+
+ <div class="accom-dates">
+ <div class="accom-date-col">
+ <span class="adc-label" style="color:var(--terra)">✅ Check-in</span>
+ <span class="adc-date">Mie 2 julio</span>
+ <span class="adc-time" style="color:var(--terra)">16:00</span>
+ </div>
+ <div class="accom-date-col">
+ <span class="adc-label" style="color:var(--muted)">🔚 Check-out</span>
+ <span class="adc-date">Lun 7 julio</span>
+ <span class="adc-time" style="color:var(--muted)">10:00</span>
+ </div>
+ </div>
+
+ <div class="accom-contacts">
+ <a class="rc-contact-row" href="https://maps.app.goo.gl/onzfDAQ79KQ1n5bi7" target="_blank">
+ <div class="rcr-icon" style="background:rgba(193,68,14,.07)">📍</div>
+ <div class="rcr-text">
+ <div class="rcr-label">Ubicación</div>
+ <div class="rcr-value">Ver en Google Maps</div>
+ </div>
+ <span class="rcr-arrow">↗</span>
+ </a>
+ <div class="rc-contact-row" style="cursor:default">
+ <div class="rcr-icon" style="background:rgba(193,68,14,.07)">👤</div>
+ <div class="rcr-text">
+ <div class="rcr-label">Dueño</div>
+ <div class="rcr-value">Richard Smith</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <div class="spacer"></div>
+</section>
+
+<!-- ═══ SECTION: VUELOS ═══════════════════════════════ -->
+<section class="section" id="sec-vuelos">
+
+ <div class="page-header">
+ <div class="ph-icon">✈️</div>
+ <h2>Vuelos</h2>
+ <p class="ph-sub">Oviedo ↔ Heraklion · Vueling</p>
+ </div>
+
+ <div class="cards-list">
+
+ <!-- ── IDA ── -->
+ <div class="journey-card">
+ <div class="journey-header">
+ <span class="jh-icon">🛫</span>
+ <span class="jh-title">Ida</span>
+ <span class="jh-date">Lun 23 junio</span>
+ </div>
+
+ <!-- Tramo 1: OVD → BCN -->
+ <div class="leg">
+ <div class="leg-header">
+ <div class="leg-num">1</div>
+ <span class="leg-label">Oviedo → Barcelona</span>
+ <span class="leg-flight">VY1573</span>
+ </div>
+ <div class="leg-route">
+ <div class="leg-airport">
+ <div class="la-time">09:25</div>
+ <div class="la-code">OVD</div>
+ <div class="la-city">Asturias</div>
+ </div>
+ <div class="leg-arrow">
+ <div class="leg-arrow-line"></div>
+ <div class="leg-duration">1h 30min</div>
+ </div>
+ <div class="leg-airport right">
+ <div class="la-time">10:55</div>
+ <div class="la-code">BCN</div>
+ <div class="la-city">El Prat</div>
+ </div>
+ </div>
+ </div>
+
+ <!-- Escala -->
+ <div class="layover">
+ <span class="layover-icon">🔄</span>
+ <span class="layover-text">Escala en Barcelona · T1</span>
+ <span class="layover-time">1h 15min</span>
+ </div>
+
+ <!-- Tramo 2: BCN → HER -->
+ <div class="leg">
+ <div class="leg-header">
+ <div class="leg-num">2</div>
+ <span class="leg-label">Barcelona → Heraklion</span>
+ <span class="leg-flight">VY3350</span>
+ </div>
+ <div class="leg-route">
+ <div class="leg-airport">
+ <div class="la-time">12:10</div>
+ <div class="la-code">BCN</div>
+ <div class="la-city">El Prat</div>
+ </div>
+ <div class="leg-arrow">
+ <div class="leg-arrow-line"></div>
+ <div class="leg-duration">2h 10min</div>
+ </div>
+ <div class="leg-airport right">
+ <div class="la-time">16:20</div>
+ <div class="la-code">HER</div>
+ <div class="la-city">Heraklion</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- ── VUELTA ── -->
+ <div class="journey-card">
+ <div class="journey-header" style="background:linear-gradient(135deg,#7a4a2a 0%,var(--terra) 100%)">
+ <span class="jh-icon">🛬</span>
+ <span class="jh-title">Vuelta</span>
+ <span class="jh-date">Lun 7 julio</span>
+ </div>
+
+ <!-- Tramo 1: HER → BCN -->
+ <div class="leg">
+ <div class="leg-header">
+ <div class="leg-num" style="background:var(--terra)">1</div>
+ <span class="leg-label">Heraklion → Barcelona</span>
+ <span class="leg-flight">VY3351</span>
+ </div>
+ <div class="leg-route">
+ <div class="leg-airport">
+ <div class="la-time">16:55</div>
+ <div class="la-code">HER</div>
+ <div class="la-city">Heraklion</div>
+ </div>
+ <div class="leg-arrow">
+ <div class="leg-arrow-line" style="background:linear-gradient(90deg,var(--terra),#e06030)"></div>
+ <div class="leg-duration">2h 25min</div>
+ </div>
+ <div class="leg-airport right">
+ <div class="la-time">19:20</div>
+ <div class="la-code">BCN</div>
+ <div class="la-city">El Prat</div>
+ </div>
+ </div>
+ </div>
+
+ <!-- Escala -->
+ <div class="layover">
+ <span class="layover-icon">🔄</span>
+ <span class="layover-text">Escala en Barcelona · T1</span>
+ <span class="layover-time">1h 40min</span>
+ </div>
+
+ <!-- Tramo 2: BCN → OVD -->
+ <div class="leg">
+ <div class="leg-header">
+ <div class="leg-num" style="background:var(--terra)">2</div>
+ <span class="leg-label">Barcelona → Oviedo</span>
+ <span class="leg-flight">VY1572</span>
+ </div>
+ <div class="leg-route">
+ <div class="leg-airport">
+ <div class="la-time">21:00</div>
+ <div class="la-code">BCN</div>
+ <div class="la-city">El Prat</div>
+ </div>
+ <div class="leg-arrow">
+ <div class="leg-arrow-line" style="background:linear-gradient(90deg,var(--terra),#e06030)"></div>
+ <div class="leg-duration">1h 35min</div>
+ </div>
+ <div class="leg-airport right">
+ <div class="la-time">22:35</div>
+ <div class="la-code">OVD</div>
+ <div class="la-city">Asturias</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ </div>
+
+ <div class="spacer"></div>
+</section>
+
+<!-- ═══ SECTION: VEHÍCULOS ════════════════════════════ -->
+<section class="section" id="sec-vehiculos">
+
+ <div class="page-header" style="background:linear-gradient(135deg,var(--olive) 0%,#7faa55 100%)">
+ <div class="ph-icon">🚗</div>
+ <h2>Vehículos</h2>
+ <p class="ph-sub">Coche Compacto · 23 jun al 7 jul</p>
+ </div>
+
+ <!-- ── COMPAÑÍA ── -->
+ <div class="rental-company">
+
+ <div class="rc-header">
+ <div class="rc-logo">🏢</div>
+ <div>
+ <div class="rc-name">MCar</div>
+ <div class="rc-tagline">Aeropuerto de Heraklion</div>
+ </div>
+ </div>
+
+ <!-- Fechas recogida / devolución -->
+ <div class="rc-dates">
+ <div class="rc-date-col">
+ <span class="rcd-label">📥 Recogida</span>
+ <span class="rcd-date">Lun 23 junio</span>
+ <span class="rcd-time">17:00</span>
+ <span class="rcd-place">Aeropuerto HER</span>
+ </div>
+ <div class="rc-date-col">
+ <span class="rcd-label">📤 Devolución</span>
+ <span class="rcd-date">Lun 7 julio</span>
+ <span class="rcd-time">16:00</span>
+ <span class="rcd-place">Aeropuerto HER</span>
+ </div>
+ </div>
+
+ <!-- Contactos -->
+ <div class="rc-contacts">
+ <a class="rc-contact-row" href="https://maps.app.goo.gl/ccNLRAtzTMZrAxfE7" target="_blank">
+ <div class="rcr-icon">📍</div>
+ <div class="rcr-text">
+ <div class="rcr-label">Ubicación oficina</div>
+ <div class="rcr-value">Monis Aretiou 5, Heraklion</div>
+ </div>
+ <span class="rcr-arrow">↗</span>
+ </a>
+ <a class="rc-contact-row" href="tel:+302816007264">
+ <div class="rcr-icon">📞</div>
+ <div class="rcr-text">
+ <div class="rcr-label">Teléfono oficina</div>
+ <div class="rcr-value">+30 281 600 7264</div>
+ </div>
+ <span class="rcr-arrow">↗</span>
+ </a>
+ <a class="rc-contact-row" href="mailto:kafetzakis@carrentalcrete.gr">
+ <div class="rcr-icon">✉️</div>
+ <div class="rcr-text">
+ <div class="rcr-label">Email</div>
+ <div class="rcr-value">kafetzakis@carrentalcrete.gr</div>
+ </div>
+ <span class="rcr-arrow">↗</span>
+ </a>
+ </div>
+
+ </div>
+
+ <!-- ── COCHE 1 ── -->
+ <div class="car-card">
+ <div class="car-header">
+ <div class="car-num">1</div>
+ <span class="car-model">Fiat Panda o similar</span>
+ <span class="car-emoji">🚗</span>
+ </div>
+ <div class="car-body">
+ <div class="car-row">
+ <div class="car-row-icon">🎫</div>
+ <div class="car-row-content">
+ <div class="car-row-label">ID de reserva</div>
+ <div class="car-row-value booking-id">006308</div>
+ </div>
+ </div>
+ <div class="car-row">
+ <div class="car-row-icon">💰</div>
+ <div class="car-row-content">
+ <div class="car-row-label">Precio</div>
+ <div class="car-row-value">399€</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <div class="spacer"></div>
+</section>
+
+<!-- ═══ SECTION: VISITAS ══════════════════════════════ -->
+<section class="section" id="sec-visitas">
+
+ <div class="page-header" style="background:linear-gradient(135deg,#7a4a2a 0%,var(--terra) 100%)">
+ <div class="ph-icon">🗺️</div>
+ <h2>Visitas</h2>
+ <p class="ph-sub" id="visitas-summary">0 de 0 completadas</p>
+ </div>
+
+ <!-- Barra de progreso global -->
+ <div class="visits-progress">
+ <div class="vp-label">
+ <span>Progreso total</span>
+ <strong id="progress-text">0 / 0</strong>
+ </div>
+ <div class="vp-bar-bg">
+ <div class="vp-bar-fill" id="progress-bar"></div>
+ </div>
+ </div>
+
+ <!-- ── VILLA ESTIA ── -->
+ <div class="villa-block">
+ <div class="villa-header" style="background:linear-gradient(135deg,#7a4a2a 0%,var(--terra) 100%)">
+ <div class="vh-icon">🏠</div>
+ <div>
+ <div class="vh-name">Villa Estia</div>
+ <div class="vh-sub">Zona este · Heraklion</div>
+ </div>
+ <div class="vh-progress">
+ <div class="vhp-num" id="prog-estia">0/0</div>
+ <div class="vhp-label">hechas</div>
+ </div>
+ </div>
+ <div class="villa-categories">
+
+ <div class="cat-section">
+ <div class="cat-header open" onclick="toggleCat(this)">
+ <span class="cat-icon">🏖️</span><span class="cat-name">Playas</span>
+ <span class="cat-count" id="count-estia-playas"></span>
+ <span class="cat-chevron">▼</span>
+ </div>
+ <div class="cat-items open">
+ <div class="visit-item" data-id="e-p-1">
+ <div class="visit-header">
+ <div class="visit-check" onclick="event.stopPropagation(); toggleVisit(this.closest('.visit-item'))">✓</div>
+ <div class="visit-info">
+ <div class="visit-name">Makry Gialos</div>
+ </div>
+ <span class="visit-tag tag-must">Top</span>
+ </div>
+ <div class="visit-detail">Paraíso de aguas turquesas y arena blanca en la costa este. Ideal para snorkel y relax. Apenas 5-10 min en coche.</div>
+ <a href="https://maps.app.goo.gl/serHyNqTNMGg9vF16" target="_blank" class="visit-link">📍 Abrir en Google Maps</a>
+ </div>
+ <div class="visit-item" data-id="e-p-2">
+ <div class="visit-header">
+ <div class="visit-check" onclick="event.stopPropagation(); toggleVisit(this.closest('.visit-item'))">✓</div>
+ <div class="visit-info">
+ <div class="visit-name">Kouremenos</div>
+ </div>
+ <span class="visit-tag tag-opt">Opcional</span>
+ </div>
+ <div class="visit-detail">Playa de arena fina y aguas cristalinas, muy tranquila y menos masificada. Ideal para windsurf.</div>
+ <a href="https://maps.app.goo.gl/B11Lkfvam5tzgCwB7" target="_blank" class="visit-link">📍 Abrir en Google Maps</a>
+ </div>
+ <div class="visit-item" data-id="e-p-3">
+ <div class="visit-header">
+ <div class="visit-check" onclick="event.stopPropagation(); toggleVisit(this.closest('.visit-item'))">✓</div>
+ <div class="visit-info">
+ <div class="visit-name">Playa de Vai</div>
+ </div>
+ <span class="visit-tag tag-must">Top</span>
+ </div>
+ <div class="visit-detail">Famosa por su bosque natural de palmeras datileras y arena blanca. Paisaje tropical único.</div>
+ <a href="https://maps.app.goo.gl/7engyMVmqF2Yq5kz6" target="_blank" class="visit-link">📍 Abrir en Google Maps</a>
+ </div>
+ </div>
+ </div>
+
+ <div class="cat-section">
+ <div class="cat-header" onclick="toggleCat(this)">
+ <span class="cat-icon">🍽️</span><span class="cat-name">Restaurantes</span>
+ <span class="cat-count" id="count-estia-restaurantes"></span>
+ <span class="cat-chevron">▼</span>
+ </div>
+ <div class="cat-items">
+ <div class="visit-item" data-id="e-r-1">
+ <div class="visit-header">
+ <div class="visit-check" onclick="event.stopPropagation(); toggleVisit(this.closest('.visit-item'))">✓</div>
+ <div class="visit-info">
+ <div class="visit-name">Por definir...</div>
+ </div>
+ <span class="visit-tag tag-opt">Plan</span>
+ </div>
+ <div class="visit-detail">Añadiremos recomendaciones pronto</div>
+ <div class="visit-link" style="opacity:0.5; pointer-events:none;">📍 Enlace pendiente</div>
+ </div>
+ </div>
+ </div>
+
+ <div class="cat-section">
+ <div class="cat-header" onclick="toggleCat(this)">
+ <span class="cat-icon">🏘️</span><span class="cat-name">Pueblos</span>
+ <span class="cat-count" id="count-estia-pueblos"></span>
+ <span class="cat-chevron">▼</span>
+ </div>
+ <div class="cat-items">
+ <div class="visit-item" data-id="e-v-1">
+ <div class="visit-header">
+ <div class="visit-check" onclick="event.stopPropagation(); toggleVisit(this.closest('.visit-item'))">✓</div>
+ <div class="visit-info">
+ <div class="visit-name">Agios Nikolaos</div>
+ </div>
+ <span class="visit-tag tag-must">Top</span>
+ </div>
+ <div class="visit-detail">Ciudad costera · Lago Voulismeni</div>
+ <div class="visit-link" style="opacity:0.5; pointer-events:none;">📍 Enlace pendiente</div>
+ </div>
+ </div>
+ </div>
+
+ <div class="cat-section">
+ <div class="cat-header" onclick="toggleCat(this)">
+ <span class="cat-icon">✨</span><span class="cat-name">Otros</span>
+ <span class="cat-count" id="count-estia-otros"></span>
+ <span class="cat-chevron">▼</span>
+ </div>
+ <div class="cat-items">
+ <div class="visit-item" data-id="e-o-1">
+ <div class="visit-header">
+ <div class="visit-check" onclick="event.stopPropagation(); toggleVisit(this.closest('.visit-item'))">✓</div>
+ <div class="visit-info">
+ <div class="visit-name">Palacio de Knossos</div>
+ </div>
+ <span class="visit-tag tag-must">Top</span>
+ </div>
+ <div class="visit-detail">Historia minoica · Imprescindible</div>
+ <div class="visit-link" style="opacity:0.5; pointer-events:none;">📍 Enlace pendiente</div>
+ </div>
+ </div>
+ </div>
+
+ </div>
+ </div>
+
+ <!-- ── VILLA VATALOS ── -->
+ <div class="villa-block">
+ <div class="villa-header" style="background:linear-gradient(135deg,var(--sea) 0%,var(--sea-light) 100%)">
+ <div class="vh-icon">🏡</div>
+ <div>
+ <div class="vh-name">Villa Vatalos</div>
+ <div class="vh-sub">Zona oeste · Chania</div>
+ </div>
+ <div class="vh-progress">
+ <div class="vhp-num" id="prog-vatalos">0/0</div>
+ <div class="vhp-label">hechas</div>
+ </div>
+ </div>
+ <div class="villa-categories">
+
+ <div class="cat-section">
+ <div class="cat-header open" onclick="toggleCat(this)">
+ <span class="cat-icon">🏖️</span><span class="cat-name">Playas</span>
+ <span class="cat-count" id="count-vatalos-playas"></span>
+ <span class="cat-chevron">▼</span>
+ </div>
+ <div class="cat-items open">
+ <div class="visit-item" data-id="v-p-1">
+ <div class="visit-header">
+ <div class="visit-check" onclick="event.stopPropagation(); toggleVisit(this.closest('.visit-item'))">✓</div>
+ <div class="visit-info">
+ <div class="visit-name">Playa de Elafonisi</div>
+ </div>
+ <span class="visit-tag tag-must">Top</span>
+ </div>
+ <div class="visit-detail">Aguas rosadas · Un paraíso</div>
+ <div class="visit-link" style="opacity:0.5; pointer-events:none;">📍 Enlace pendiente</div>
+ </div>
+ <div class="visit-item" data-id="v-p-2">
+ <div class="visit-header">
+ <div class="visit-check" onclick="event.stopPropagation(); toggleVisit(this.closest('.visit-item'))">✓</div>
+ <div class="visit-info">
+ <div class="visit-name">Laguna de Balos</div>
+ </div>
+ <span class="visit-tag tag-must">Top</span>
+ </div>
+ <div class="visit-detail">Paisajes espectaculares · Acceso en barco</div>
+ <div class="visit-link" style="opacity:0.5; pointer-events:none;">📍 Enlace pendiente</div>
+ </div>
+ </div>
+ </div>
+
+ <div class="cat-section">
+ <div class="cat-header" onclick="toggleCat(this)">
+ <span class="cat-icon">🥾</span><span class="cat-name">Gargantas</span>
+ <span class="cat-count" id="count-vatalos-gargantas"></span>
+ <span class="cat-chevron">▼</span>
+ </div>
+ <div class="cat-items">
+ <div class="visit-item" data-id="v-g-1">
+ <div class="visit-header">
+ <div class="visit-check" onclick="event.stopPropagation(); toggleVisit(this.closest('.visit-item'))">✓</div>
+ <div class="visit-info">
+ <div class="visit-name">Garganta de Samariá</div>
+ </div>
+ <span class="visit-tag tag-must">Top</span>
+ </div>
+ <div class="visit-detail">El desafío del viaje · 16km senderismo</div>
+ <div class="visit-link" style="opacity:0.5; pointer-events:none;">📍 Enlace pendiente</div>
+ </div>
+ </div>
+ </div>
+
+ <div class="cat-section">
+ <div class="cat-header" onclick="toggleCat(this)">
+ <span class="cat-icon">🍽️</span><span class="cat-name">Restaurantes</span>
+ <span class="cat-count" id="count-vatalos-restaurantes"></span>
+ <span class="cat-chevron">▼</span>
+ </div>
+ <div class="cat-items">
+ <div class="visit-item" data-id="v-r-1">
+ <div class="visit-header">
+ <div class="visit-check" onclick="event.stopPropagation(); toggleVisit(this.closest('.visit-item'))">✓</div>
+ <div class="visit-info">
+ <div class="visit-name">Tavernas de Chania</div>
+ </div>
+ <span class="visit-tag tag-must">Top</span>
+ </div>
+ <div class="visit-detail">Gastronomía local junto al puerto</div>
+ <div class="visit-link" style="opacity:0.5; pointer-events:none;">📍 Enlace pendiente</div>
+ </div>
+ </div>
+ </div>
+
+ <div class="cat-section">
+ <div class="cat-header" onclick="toggleCat(this)">
+ <span class="cat-icon">🏘️</span><span class="cat-name">Pueblos</span>
+ <span class="cat-count" id="count-vatalos-pueblos"></span>
+ <span class="cat-chevron">▼</span>
+ </div>
+ <div class="cat-items">
+ <div class="visit-item" data-id="v-v-1">
+ <div class="visit-header">
+ <div class="visit-check" onclick="event.stopPropagation(); toggleVisit(this.closest('.visit-item'))">✓</div>
+ <div class="visit-info">
+ <div class="visit-name">Ciudad de Chania</div>
+ </div>
+ <span class="visit-tag tag-must">Top</span>
+ </div>
+ <div class="visit-detail">Puerto veneciano · El corazón del oeste</div>
+ <div class="visit-link" style="opacity:0.5; pointer-events:none;">📍 Enlace pendiente</div>
+ </div>
+ </div>
+ </div>
+
+ </div>
+ </div>
+
+ <div class="spacer"></div>
+</section>
+
+<!-- ═══ BOTTOM NAVIGATION ═════════════════════════════ -->
+<nav class="bottom-nav">
+ <button class="nav-item active" id="nav-index" onclick="navigate('index')">
+ <span class="nav-icon">🏠</span>
+ <span class="nav-label">Inicio</span>
+ </button>
+ <button class="nav-item" id="nav-alojamiento" onclick="navigate('alojamiento')">
+ <span class="nav-icon">🏡</span>
+ <span class="nav-label">Aloja.</span>
+ </button>
+ <button class="nav-item" id="nav-vuelos" onclick="navigate('vuelos')">
+ <span class="nav-icon">✈️</span>
+ <span class="nav-label">Vuelos</span>
+ </button>
+ <button class="nav-item" id="nav-vehiculos" onclick="navigate('vehiculos')">
+ <span class="nav-icon">🚗</span>
+ <span class="nav-label">Coches</span>
+ </button>
+ <button class="nav-item" id="nav-visitas" onclick="navigate('visitas')">
+ <span class="nav-icon">🗺️</span>
+ <span class="nav-label">Visitas</span>
+ </button>
+</nav>
+
+<script>
+ // ─── NAVIGATION ──────────────────────────────────────
+ function navigate(id) {
+ document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+ document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+ document.getElementById('sec-' + id).classList.add('active');
+ document.getElementById('nav-' + id).classList.add('active');
+ window.scrollTo({ top: 0, behavior: 'smooth' });
+ }
+
+ // ─── COUNTDOWN ───────────────────────────────────────
+ function updateCountdown() {
+ const trip = new Date('2026-06-23');
+ const today = new Date(); today.setHours(0,0,0,0);
+ const diff = Math.ceil((trip - today) / 86400000);
+ const el = document.getElementById('countdown-num');
+ if (diff > 0) el.textContent = diff;
+ else if (diff === 0) el.textContent = '¡HOY!';
+ else el.textContent = '¡Ya fue! 🎉';
+ }
+ updateCountdown();
+
+ // ─── VISITAS ─────────────────────────────────────────
+ const STORAGE_KEY = 'creta_pyp_2026';
+
+ function loadState() {
+ try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+ catch { return {}; }
+ }
+
+ function saveState(state) {
+ localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+ }
+
+ function toggleVisit(el) {
+ const id = el.dataset.id;
+ const state = loadState();
+ state[id] = !state[id];
+ saveState(state);
+ el.classList.toggle('done', state[id]);
+ updateProgress();
+ }
+
+ function toggleCat(headerEl) {
+ headerEl.classList.toggle('open');
+ headerEl.nextElementSibling.classList.toggle('open');
+ }
+
+ function updateProgress() {
+ const state = loadState();
+ const all = document.querySelectorAll('#sec-visitas .visit-item');
+ let total = all.length, done = 0;
+ all.forEach(el => { if (state[el.dataset.id]) done++; });
+
+ document.getElementById('progress-text').textContent = done + ' / ' + total;
+ document.getElementById('progress-bar').style.width = (total ? Math.round(done / total * 100) : 0) + '%';
+ document.getElementById('visitas-summary').textContent = done + ' de ' + total + ' completadas';
+
+ // Per-villa counters
+ [['estia','e-'], ['vatalos','v-']].forEach(([villa, prefix]) => {
+ const items = document.querySelectorAll('.visit-item[data-id^="' + prefix + '"]');
+ let vt = items.length, vd = 0;
+ items.forEach(el => { if (state[el.dataset.id]) vd++; });
+ document.getElementById('prog-' + villa).textContent = vd + '/' + vt;
+ });
+
+ // Per-category counters
+ const cats = {
+ 'estia-playas': 'e-p-', 'estia-restaurantes': 'e-r-',
+ 'estia-pueblos': 'e-v-', 'estia-otros': 'e-o-',
+ 'vatalos-playas': 'v-p-', 'vatalos-gargantas': 'v-g-',
+ 'vatalos-restaurantes': 'v-r-', 'vatalos-pueblos': 'v-v-',
+ 'vatalos-otros': 'v-o-'
+ };
+ for (const [key, prefix] of Object.entries(cats)) {
+ const el = document.getElementById('count-' + key);
+ if (!el) continue;
+ const items = document.querySelectorAll('.visit-item[data-id^="' + prefix + '"]');
+ let ct = items.length, cd = 0;
+ items.forEach(i => { if (state[i.dataset.id]) cd++; });
+ el.textContent = cd + '/' + ct;
+ }
+ }
+
+ // Init: restore saved state on page load
+ (function initVisitas() {
+ const state = loadState();
+ document.querySelectorAll('#sec-visitas .visit-item').forEach(el => {
+ if (state[el.dataset.id]) el.classList.add('done');
+ });
+ updateProgress();
+ })();
+</script>
+</body>
+</html>
