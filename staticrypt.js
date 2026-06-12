@@ -2,7 +2,7 @@
 (function() {
     window.staticrypt_crypto = {};
     window.staticrypt_codec = {};
-    const cryptoEngine = const crypto = typeof window === "undefined" ? require("node:crypto").webcrypto : window.crypto;
+    const cryptoEngine = typeof window === "undefined" ? require("node:crypto").webcrypto : window.crypto;
 const { subtle } = crypto;
 
 const IV_BITS = 16 * 8;
